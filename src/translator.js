@@ -7,18 +7,16 @@ const translate = new Translate({
 
 class Translator {
     
-    traducir(content, targetLang){
+    translate(content, targetLang){
 
-        return new Promise(function(resolve,reject){
-            translate
-                .translate(content,targetLang)
-                .then(results => {
-                    resolve(results[0]);
-                })
-                .catch(err => {
-                    reject(err);
-                })
-        });   
+        return new Promise( async (resolve, reject) => {
+            try {
+                const results = await translate.translate(content, targetLang);
+                resolve(results[0]);
+            } catch(err) {
+                reject(err);
+            }
+        });
       
     }; 
 
