@@ -6,20 +6,10 @@ const translate = new Translate({
 });
 
 class Translator {
-    
-    translate(content, targetLang){
-
-        return new Promise( async (resolve, reject) => {
-            try {
-                const results = await translate.translate(content, targetLang);
-                resolve(results[0]);
-            } catch(err) {
-                reject(err);
-            }
-        });
-      
+    async translate(content, targetLang){
+        const res = (await translate.translate(content, targetLang))[0];
+        return res;
     }; 
-
 }
 
 module.exports = Translator;
